@@ -10,20 +10,16 @@ let i = 0;
 
 function appendValue(value,e) {
    
-    if(i>0 && e.target.classList.contains('operation') && screen.value[i-1] == value){
-        if( value != "-"){
-            screen.value = screen.value.toString().slice(0,i);
-        }
-        else{
-            screen.value = screen.value.toString().slice(0,i-1) + '+';
-        }
-        
+    if(i>0 && e.target.classList.contains('operation') && (screen.value[i-1] == '*' || screen.value[i-1] == '/' || screen.value[i-1] == '+' || screen.value[i-1] == '-')){
+       
+            screen.value = screen.value.toString().slice(0,i-1);
+            screen.value += value;  
     }
+    else {
+        screen.value += value;
+        i++;
     
-    else{
-    screen.value += value;
-    i++;
-    }
+    }  
 }
 
 
